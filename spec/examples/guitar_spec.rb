@@ -1,9 +1,12 @@
 require_relative '../../examples/guitar'
 
 describe Guitar do
-  subject { described_class.new(brand: 'Gibson')}
+  let(:attrs) { { brand: 'Gibson', price: 3399.99, type: 'Les Paul', color: 'Mahogany' } }
+  
+  subject { described_class.new(attrs)}
 
-  it 'has a brand' do
-    subject.brand.should == 'Gibson'
-  end
+  its(:brand){ should == attrs[:brand] }
+  its(:price){ should == attrs[:price] }
+  its(:type){ should == attrs[:type] }
+  its(:color){ should == attrs[:color] }
 end
