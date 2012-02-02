@@ -1,7 +1,7 @@
-require_relative '../data_store'
+require 'hashydb/data_store'
 
-describe DataStore do
-  subject { DataStore.instance }
+describe HashyDB::DataStore do
+  subject { HashyDB::DataStore.instance }
 
   let(:data1) { { id: 1, field_1: 'value 1', field_2: 3, field_3: [1,2,3], shared_between_1_and_2: 'awesome_value', :some_array => [1,2,3,4] } }
   let(:data2) { { id: 2, field_1: 'value 1.2', field_2: 6, shared_between_1_and_2: 'awesome_value', :some_array => [4,5,6] } }
