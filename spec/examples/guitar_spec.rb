@@ -9,4 +9,24 @@ describe Guitar do
   its(:price){ should == attrs[:price] }
   its(:type){ should == attrs[:type] }
   its(:color){ should == attrs[:color] }
+
+  describe "storing the guitar" do
+    let(:mock_id) { mock 'unique id for the guitar' }
+
+    before do
+      GuitarDocument.stub(store: mock_id)
+    end
+
+    it 'uses the guitar document to store it' do
+      GuitarDocument.should_receive(:store).with(subject).and_return(mock_id)
+
+      subject.store
+    end
+
+    it 'sets the id received from the document to the guitar so we can find it later' do
+      subject.store
+
+      subject.id.should == mock_id
+    end
+  end
 end
