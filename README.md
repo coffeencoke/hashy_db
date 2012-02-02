@@ -17,6 +17,8 @@ initializers/datastore.rb
 ::DB_HASH = {}
 `
 
+View the examples folder for an example implementation.
+
 # Todos
 
 - Make this into a gem
@@ -27,14 +29,12 @@ initializers/datastore.rb
 
 - fork into a topic branch, write specs, make a pull request.
 
+# Owners
+
+Matt Simpson - [@railsgrammer](https://twitter.com/railsgrammer)
+<br />
+Jason Mayer - [@farkerhaiku](https://twitter.com/farkerhaiku)
+
 # Contributors
 
-## Matt Simpson
-
-* https://twitter.com/railsgrammer
-* https://github.com/coffeencoke
-
-## Jason Mayer
-
-* https://twitter.com/farkerhaiku
-* https://github.com/farkerhaiku
+David Czarnecki - [@czarneckid](https://twitter.com/czarneckid)
