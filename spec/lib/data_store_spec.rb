@@ -72,4 +72,8 @@ describe HashyDB::DataStore do
     records.first[:id].should == 1
     subject.get(:some_collection).size.should == 3
   end
+
+  it 'can get a record for a specific key and value' do
+    subject.get_for_key_with_value(:some_collection, :field_1, 'value 1').should == data1
+  end
 end

@@ -22,6 +22,10 @@ module HashyDB
       get(collection_name).select { |a| a[key] == value }
     end
 
+    def get_for_key_with_value(collection_name, key, value)
+      get_all_for_key_with_value(collection_name, key, value)[0]
+    end
+
     def get_by_params(collection_name, hash)
       get(collection_name).select do |record|
         hash.all?{|k,v| record[k] == v }

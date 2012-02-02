@@ -48,6 +48,10 @@ module HashyDB
         HashyDB::DataStore.instance.get_one(data_collection, :id, id)
       end
 
+      def by_field(field, value)
+        DataStore.instance.get_for_key_with_value(data_collection, field, value)
+      end
+
       def all
         HashyDB::DataStore.instance.get(data_collection)
       end

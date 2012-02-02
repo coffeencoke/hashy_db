@@ -90,6 +90,16 @@ shared_examples_for 'a data model' do
     end
   end
 
+  describe "getting a data model by a specific field" do
+    let(:mock_data_model) { mock 'data model in the data store' }
+
+    it 'returns the stored data models' do
+      mock_data_store.should_receive(:get_for_key_with_value).with(collection_name, :field, 'some value').and_return(mock_data_model)
+
+      described_class.by_field(:field, 'some value').should == mock_data_model
+    end
+  end
+
   describe "getting all the data fields by a parameter hash" do
     let(:mock_data_models) { mock 'some data model'}
     let(:sample_hash) { {field1: nil, field2: 'not nil' }}
