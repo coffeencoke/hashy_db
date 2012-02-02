@@ -1,4 +1,8 @@
+require_relative '../lib/hashy_db/data_model'
+
 class GuitarDocument
-  def self.store(guitar)
-  end
+  include HashyDB::DataModel
+
+  data_collection :guitars
+  data_fields :brand, :price, :type, :color
 end

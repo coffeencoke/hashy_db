@@ -5,7 +5,7 @@ shared_examples_for 'a data model' do
   let(:mock_data_store) { mock 'data store data model' }
 
   before do
-    DataStore.stub(:instance => mock_data_store)
+    HashyDB::DataStore.stub(:instance => mock_data_store)
   end
 
   describe "storing a data model" do
