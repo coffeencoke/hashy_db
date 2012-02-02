@@ -1,5 +1,5 @@
 require 'digest'
-require 'hashydb/data_store'
+require_relative '../../../lib/hashy_db/data_store'
 
 shared_examples_for 'a data model' do
   let(:mock_data_store) { mock 'data store data model' }

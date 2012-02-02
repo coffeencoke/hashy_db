@@ -1,4 +1,4 @@
-require 'hashydb/data_store'
+require_relative '../../lib/hashy_db/data_store'
 
 describe HashyDB::DataStore do
   subject { HashyDB::DataStore.instance }

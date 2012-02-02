@@ -1,5 +1,5 @@
 require 'rspec'
-require 'hashydb'
+require 'hashy_db'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 

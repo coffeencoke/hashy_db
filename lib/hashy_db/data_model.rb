@@ -1,6 +1,6 @@
 # SRP: Interface to read and write to and from the data store class for a specific collection
 
-require 'hashydb/data_store'
+require_relative '../hashy_db/data_store'
 
 require 'digest'
 require 'active_support/concern'
