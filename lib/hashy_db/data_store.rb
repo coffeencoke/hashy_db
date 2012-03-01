@@ -1,25 +1,32 @@
 # SRP: Model with implementation on how to store each collection in a data store
 require 'singleton'
 require 'active_support/core_ext/module/delegation'
+require 'digest'
 
-module HashyDB
+module HashyDb
   class DataStore
     include Singleton
 
-    attr_writer :data_store
+    def self.primary_key_identifier
+      :id
+    end
+
+    def self.generate_unique_id(salt)
+      Digest::SHA256.hexdigest("#{Time.current.utc}#{salt}")[0..6]
+    end
 
     def add(collection_name, hash)
-      get(collection_name) << hash
+      find_all(collection_name) << hash
     end
 
     def replace(collection_name, hash)
-      collection = get(collection_name)
+      collection = find_all(collection_name)
       index = collection.index{ |object| object[:id] == hash[:id] }
       collection[index] =  hash
     end
 
     def get_all_for_key_with_value(collection_name, key, value)
-      get(collection_name).select { |a| a[key] == value }
+      find_all(collection_name).select { |a| a[key] == value }
     end
 
     def get_for_key_with_value(collection_name, key, value)
@@ -27,21 +34,21 @@ module HashyDB
     end
 
     def get_by_params(collection_name, hash)
-      get(collection_name).select do |record|
+      find_all(collection_name).select do |record|
         hash.all?{|k,v| record[k] == v }
       end
     end
 
-    def get(collection_name)
+    def find_all(collection_name)
       data_store[collection_name] ||= []
     end
 
-    def get_one(collection_name, key, value)
-      get(collection_name).find { |x| x[key] == value }
+    def find(collection_name, key, value)
+      find_all(collection_name).find { |x| x[key] == value }
     end
 
     def push_to_array(collection_name, identifying_key, identifying_value, array_key, value_to_push)
-      record = get_one(collection_name, identifying_key, identifying_value)
+      record = find(collection_name, identifying_key, identifying_value)
       if (record[array_key])
         record[array_key] << value_to_push
       else
@@ -51,13 +58,13 @@ module HashyDB
     end
 
     def remove_from_array(collection_name, identifying_key, identifying_value, array_key, value_to_pop)
-      record = get_one(collection_name, identifying_key, identifying_value)
+      record = find(collection_name, identifying_key, identifying_value)
       record[array_key].reject! { |x| x == value_to_pop }
     end
 
     def containing_any(collection_name, key, values)
-      get(collection_name).select do |x|
-        result = if x[key].is_a?(Array)
+      find_all(collection_name).select do |x|
+        if x[key].is_a?(Array)
           (x[key] & values).any?
         else
           values.include?(x[key])
@@ -66,7 +73,7 @@ module HashyDB
     end
 
     def array_contains(collection_name, key, value)
-      get(collection_name).select do |x|
+      find_all(collection_name).select do |x|
         x[key] && x[key].include?(value)
       end
     end
@@ -77,6 +84,10 @@ module HashyDB
 
     def insert(collection_name, data)
       data_store[collection_name] = data
+    end
+
+    def set_data_store(hash)
+      @data_store = hash
     end
 
     private
