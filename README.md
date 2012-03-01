@@ -16,9 +16,6 @@ initializers/datastore.rb
 `
 ::DB_HASH = {}
 `
-
-View the examples folder for an example implementation.
-
 # Contribute
 
 - fork into a topic branch, write specs, make a pull request.
