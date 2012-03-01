@@ -4,12 +4,12 @@ require 'hashy_db/version'
 
 Gem::Specification.new do |s|
   s.name        = "hashy_db"
-  s.version     = HashyDB::VERSION
+  s.version     = HashyDb::VERSION
   s.authors     = ["Matt Simpson", "Jason Mayer"]
   s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
-  s.homepage    = "https://github.com/coffeencoke/HashyDB"
-  s.summary     = %q{Provides an inteface to store and retrieve data in a Hash.}
-  s.description = %q{Provides an inteface to store and retrieve data in a Hash.}
+  s.homepage    = "https://github.com/asynchrony/HashyDb"
+  s.summary     = %q{Provides an interface to store and retrieve data in a Hash.}
+  s.description = %q{Provides an interface to store and retrieve data in a Hash.}
 
   s.rubyforge_project = "hashy_db"
 
