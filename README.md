@@ -1,6 +1,6 @@
 # What is this?
 
-Provides an inteface to store and retrieve data in a Hash.  
+Light weight ORM to persist data to a hash. 
 
 # Why would you want this?
 
@@ -13,17 +13,11 @@ Example in a rails app:
 
 initializers/datastore.rb
 
-`ruby
+`
 ::DB_HASH = {}
 `
 
 View the examples folder for an example implementation.
-
-# Todos
-
-- Make this into a gem
-- Rename *.get_one into *.find
-- Add a better readme
 
 # Contribute
 
