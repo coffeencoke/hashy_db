@@ -5,7 +5,7 @@ require 'hashy_db/version'
 Gem::Specification.new do |s|
   s.name        = "hashy_db"
   s.version     = HashyDb::VERSION
-  s.authors     = ["Matt Simpson", "Jason Mayer"]
+  s.authors     = ["Matt Simpson", "Jason Mayer", "Asynchrony Solutions"]
   s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
   s.homepage    = "https://github.com/asynchrony/HashyDb"
   s.summary     = %q{Provides an interface to store and retrieve data in a Hash.}
