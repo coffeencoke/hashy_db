@@ -11,7 +11,7 @@ The motivation behind this is so you can clone the repository down, have ruby in
 
 # How to use
 
-view the example mince rails app to see how to use this.
+view the [example mince rails app](https://github.com/coffeencoke/mince_rails_example) to see how to use this.
 
 Basic usage is to create a constant called DB_HASH and set it to an empty hash in an initializer file, or whenever your application gets loaded (if you're not running rails).
 
