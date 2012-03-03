@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = HashyDb::VERSION
   s.authors     = ["Matt Simpson", "Jason Mayer", "Asynchrony Solutions"]
   s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
-  s.homepage    = "https://github.com/asynchrony/HashyDb"
+  s.homepage    = "https://github.com/asynchrony/hashy_db"
   s.summary     = %q{Provides an interface to store and retrieve data in a Hash.}
   s.description = %q{Provides an interface to store and retrieve data in a Hash.}
 
