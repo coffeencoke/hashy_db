@@ -30,7 +30,7 @@ HashyDb::DataStore.add 'books', title: 'The World In Photographs', publisher: 'N
 HashyDb::DataStore.find_all 'books'
 
 # Replace a specific book
-HashyDb::DataStore.replace 'books', title: 'A World In Photographs', publisher: 'National Geographic'
+HashyDb::DataStore.replace 'books', id: 1, title: 'A World In Photographs', publisher: 'National Geographic'
 </pre>
 
 View the [data_store.rb](https://github.com/asynchrony/hashy_db/blob/master/lib/hashy_db/data_store.rb) file for all methods available.
