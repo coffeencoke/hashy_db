@@ -59,3 +59,4 @@ Jason Mayer - [@farkerhaiku](https://twitter.com/farkerhaiku)
 # Contributors
 
 David Czarnecki - [@czarneckid](https://twitter.com/czarneckid)
+Amos King - [@adkron](https://twitter.com/adkron)
