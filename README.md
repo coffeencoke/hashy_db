@@ -29,10 +29,7 @@ HashyDb::DataStore.add 'books', title: 'The World In Photographs', publisher: 'N
 # Retrieve all records from the books collection
 HashyDb::DataStore.find_all 'books'
 
-# Retrieve all records from the books collection
-HashyDb::DataStore.find_all 'books'
-
-# Replace the a specific book
+# Replace a specific book
 HashyDb::DataStore.replace 'books', title: 'A World In Photographs', publisher: 'National Geographic'
 </pre>
 
