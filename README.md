@@ -29,6 +29,9 @@ HashyDb::DataStore.add 'books', title: 'The World In Photographs', publisher: 'N
 # Retrieve all records from the books collection
 HashyDb::DataStore.find_all 'books'
 
+# Update a field with a value for a specific record
+HashyDb::DataStore.update_field_with_value 'books', 'primary_id_123', :field_name, 'value to update with'
+
 # Replace a specific book
 HashyDb::DataStore.replace 'books', id: 1, title: 'A World In Photographs', publisher: 'National Geographic'
 </pre>

@@ -50,6 +50,12 @@ describe HashyDb::DataStore do
     subject.find(:some_collection, :id, 2)[:field_1].should == 'value modified'
   end
 
+  it 'can update a field with a value on a specific record' do
+    subject.update_field_with_value(:some_collection, 3, :field_2, '10')
+    
+    subject.find(:some_collection, :id, 3)[:field_2].should == '10'
+  end
+
   it 'can get one document' do
     subject.find(:some_collection, :field_1, 'value 1').should == data1
     subject.find(:some_collection, :field_2, 6).should == data2
