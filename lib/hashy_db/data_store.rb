@@ -39,13 +39,13 @@ module HashyDb
 
     def get_by_params(collection_name, hash)
       find_all(collection_name).select do |record|
-        hash.all?{|k,v|
+        hash.all? do |k,v|
           if record[k].is_a?(Array)
             record[k].include?(v)
           else
             record[k] == v
           end
-        }
+        end
       end
     end
 
