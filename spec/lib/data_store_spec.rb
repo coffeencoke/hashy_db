@@ -3,9 +3,9 @@ require_relative '../../lib/hashy_db/data_store'
 describe HashyDb::DataStore do
   subject { HashyDb::DataStore.instance }
 
-  let(:data1) { {id: 1, field_1: 'value 1', field_2: 3, field_3: [1, 2, 3], shared_between_1_and_2: 'awesome_value', :some_array => [1, 2, 3, 4], :shared_between_1_and_3 => 'same'} }
-  let(:data2) { {id: 2, field_1: 'value 1.2', field_2: 6, shared_between_1_and_2: 'awesome_value', :some_array => [4, 5, 6], :shared_between_1_and_3 => 'not same'}  }
-  let(:data3) { {id: 3, field_1: 'value 3', field_2: 9, shared_between_1_and_2: 'not the same as 1 and 2', :some_array => [1, 7], :shared_between_1_and_3 => 'same'}  }
+  let(:data1) { {id: 1, field_1: 'value 1', field_2: 3, field_3: [1, 2, 3], shared_between_1_and_2: 'awesome_value', :some_array => [1, 2, 3, 4]} }
+  let(:data2) { {id: 2, field_1: 'value 1.2', field_2: 6, shared_between_1_and_2: 'awesome_value', :some_array => [4, 5, 6]} }
+  let(:data3) { {id: 3, field_1: 'value 3', field_2: 9, shared_between_1_and_2: 'not the same as 1 and 2', :some_array => [1, 7]} }
 
   before do
     subject.set_data_store({})
@@ -105,12 +105,5 @@ describe HashyDb::DataStore do
 
   it 'can get a record for a specific key and value' do
     subject.get_for_key_with_value(:some_collection, :field_1, 'value 1').should == data1
-  end
-
-  it 'can get record using get_by_params when one of the key contains array values' do
-    records = subject.get_by_params(:some_collection, some_array: 1, shared_between_1_and_3: 'same')
-    records.size.should be(2)
-    records.first[:id].should == 1
-    records.last[:id].should == 3
   end
 end
