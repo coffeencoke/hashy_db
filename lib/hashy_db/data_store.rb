@@ -15,7 +15,7 @@ module HashyDb
       Digest::SHA256.hexdigest("#{Time.current.utc}#{salt}")[0..6]
     end
 
-    def delete(collection_name, field)
+    def delete_field(collection_name, field)
       find_all(collection_name).each do |row|
         row.delete(field)
       end

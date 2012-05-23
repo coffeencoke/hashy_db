@@ -37,7 +37,7 @@ describe HashyDb::DataStore do
   end
 
   it 'can delete a field' do
-    subject.delete(:some_collection, :field_1)
+    subject.delete_field(:some_collection, :field_1)
 
     subject.find_all(:some_collection).each do |row|
       row.has_key?(:field_1).should be_false
