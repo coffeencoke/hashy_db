@@ -31,6 +31,12 @@ module HashyDb
       collection[index] =  hash
     end
 
+    def delete_by_params(collection_name, params)
+      find_all(collection_name).reject! do |record|
+        params.all?{|k,v| record[k] == v }
+      end
+    end
+
     def update_field_with_value(collection_name, primary_key_value, field_name, new_value)
       find(collection_name, :id, primary_key_value)[field_name] = new_value
     end

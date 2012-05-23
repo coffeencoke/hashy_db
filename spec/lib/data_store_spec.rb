@@ -44,6 +44,14 @@ describe HashyDb::DataStore do
     end
   end
 
+  it 'can delete records that match a given set of fields' do
+    params = { id: 1, field_1: 'value 1' }
+
+    subject.delete_by_params(:some_collection, params)
+
+    subject.find_all(:some_collection).should == [data2, data3]
+  end
+
   it 'can write and read data to and from a collection' do
     data4 = {id: 3, field_1: 'value 3', field_2: 9, shared_between_1_and_2: 'not the same as 1 and 2', :some_array => [1, 7]}
 
