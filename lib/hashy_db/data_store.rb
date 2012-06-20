@@ -94,6 +94,10 @@ module HashyDb
       end
     end
 
+    def delete_collection(collection_name)
+      data_store.delete(collection_name)
+    end
+
     def clear
       data_store.clear
     end

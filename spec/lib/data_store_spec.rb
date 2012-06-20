@@ -44,6 +44,12 @@ describe HashyDb::DataStore do
     end
   end
 
+  it 'can delete a collection' do
+    subject.delete_collection(:some_collection)
+    
+    subject.find_all(:some_collection).should == []
+  end
+
   it 'can delete records that match a given set of fields' do
     params = { id: 1, field_1: 'value 1' }
 
