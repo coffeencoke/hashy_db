@@ -78,6 +78,12 @@ describe HashyDb::DataStore do
     subject.find(:some_collection, :id, 3)[:field_2].should == '10'
   end
 
+  it 'can increment a field with a given amount for a specific field' do
+    subject.increment_field_by_amount(:some_collection, 1, :field_2, 3)
+    
+    subject.find(:some_collection, :id, 1)[:field_2].should == 6
+  end
+
   it 'can get one document' do
     subject.find(:some_collection, :field_1, 'value 1').should == data1
     subject.find(:some_collection, :field_2, 6).should == data2

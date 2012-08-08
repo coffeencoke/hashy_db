@@ -41,6 +41,10 @@ module HashyDb
       find(collection_name, :id, primary_key_value)[field_name] = new_value
     end
 
+    def increment_field_by_amount(collection_name, primary_key_value, field_name, amount)
+      find(collection_name, :id, primary_key_value)[field_name] += amount
+    end
+
     def get_all_for_key_with_value(collection_name, key, value)
       find_all(collection_name).select { |a| a[key] == value }
     end
