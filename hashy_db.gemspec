@@ -22,9 +22,9 @@ Gem::Specification.new do |s|
   )
   s.test_files    = %w(
     spec/integration/mince_interface_spec.rb
-    spec/units/config_spec.rb
-    spec/units/data_store_spec.rb
-    spec/units/interface_spec.rb
+    spec/units/hashy_db/config_spec.rb
+    spec/units/hashy_db/data_store_spec.rb
+    spec/units/hashy_db/interface_spec.rb
   )
   s.require_paths = ["lib"]
 
