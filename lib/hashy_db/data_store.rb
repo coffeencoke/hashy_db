@@ -1,6 +1,4 @@
-# SRP: Model with implementation on how to store each collection in a data store
 require 'singleton'
-require 'active_support/core_ext/module/delegation'
 require 'digest'
 
 module HashyDb
@@ -15,59 +13,59 @@ module HashyDb
       Digest::SHA256.hexdigest("#{Time.current.utc}#{salt}")[0..6]
     end
 
-    def delete_field(collection_name, field)
+    def self.delete_field(collection_name, field)
       find_all(collection_name).each do |row|
         row.delete(field)
       end
     end
 
-    def add(collection_name, hash)
+    def self.add(collection_name, hash)
       find_all(collection_name) << hash
     end
 
-    def replace(collection_name, hash)
+    def self.replace(collection_name, hash)
       collection = find_all(collection_name)
       index = collection.index{ |object| object[:id] == hash[:id] }
       collection[index] =  hash
     end
 
-    def delete_by_params(collection_name, params)
+    def self.delete_by_params(collection_name, params)
       find_all(collection_name).reject! do |record|
         params.all?{|k,v| record[k] == v }
       end
     end
 
-    def update_field_with_value(collection_name, primary_key_value, field_name, new_value)
+    def self.update_field_with_value(collection_name, primary_key_value, field_name, new_value)
       find(collection_name, :id, primary_key_value)[field_name] = new_value
     end
 
-    def increment_field_by_amount(collection_name, primary_key_value, field_name, amount)
+    def self.increment_field_by_amount(collection_name, primary_key_value, field_name, amount)
       find(collection_name, :id, primary_key_value)[field_name] += amount
     end
 
-    def get_all_for_key_with_value(collection_name, key, value)
+    def self.get_all_for_key_with_value(collection_name, key, value)
       find_all(collection_name).select { |a| a[key] == value }
     end
 
-    def get_for_key_with_value(collection_name, key, value)
-      get_all_for_key_with_value(collection_name, key, value)[0]
+    def self.get_for_key_with_value(collection_name, key, value)
+      self.get_all_for_key_with_value(collection_name, key, value)[0]
     end
 
-    def get_by_params(collection_name, hash)
-      find_all(collection_name).select do |record|
+    def self.get_by_params(collection_name, hash)
+      self.find_all(collection_name).select do |record|
         hash.all?{|k,v| record[k] == v }
       end
     end
 
-    def find_all(collection_name)
+    def self.find_all(collection_name)
       data_store[collection_name] ||= []
     end
 
-    def find(collection_name, key, value)
+    def self.find(collection_name, key, value)
       find_all(collection_name).find { |x| x[key] == value }
     end
 
-    def push_to_array(collection_name, identifying_key, identifying_value, array_key, value_to_push)
+    def self.push_to_array(collection_name, identifying_key, identifying_value, array_key, value_to_push)
       record = find(collection_name, identifying_key, identifying_value)
       if (record[array_key])
         record[array_key] << value_to_push
@@ -77,12 +75,12 @@ module HashyDb
       record[array_key].uniq!
     end
 
-    def remove_from_array(collection_name, identifying_key, identifying_value, array_key, value_to_pop)
+    def self.remove_from_array(collection_name, identifying_key, identifying_value, array_key, value_to_pop)
       record = find(collection_name, identifying_key, identifying_value)
       record[array_key].reject! { |x| x == value_to_pop }
     end
 
-    def containing_any(collection_name, key, values)
+    def self.containing_any(collection_name, key, values)
       find_all(collection_name).select do |x|
         if x[key].is_a?(Array)
           (x[key] & values).any?
@@ -92,32 +90,38 @@ module HashyDb
       end
     end
 
-    def array_contains(collection_name, key, value)
+    def self.array_contains(collection_name, key, value)
       find_all(collection_name).select do |x|
         x[key] && x[key].include?(value)
       end
     end
 
-    def delete_collection(collection_name)
+    def self.delete_collection(collection_name)
       data_store.delete(collection_name)
     end
 
-    def clear
+    def self.clear
       data_store.clear
     end
 
-    def insert(collection_name, data)
+    def self.insert(collection_name, data)
       data_store[collection_name] = data
     end
 
-    def set_data_store(hash)
-      @data_store = hash
+    def self.set_data_store(hash)
+      instance.data_store = hash
     end
 
-    private
+    def self.data_store
+      instance.data_store
+    end
 
     def data_store
-      @data_store ||= ::DB_HASH
+      @data_store ||= {}
+    end
+
+    def data_store=(hash)
+      @data_store = hash
     end
   end
 end
