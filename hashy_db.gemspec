@@ -13,8 +13,19 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = s.name
 
-  s.files         = %w(lib/hashy_db.rb lib/hashy_db/data_store.rb lib/hashy_db/version.rb)
-  s.test_files    = %w(spec/lib/data_store_spec.rb)
+  s.files         = %w(
+    lib/hashy_db.rb 
+    lib/hashy_db/data_store.rb 
+    lib/hashy_db/version.rb 
+    lib/hashy_db/config.rb 
+    lib/hashy_db/interface.rb
+  )
+  s.test_files    = %w(
+    spec/integration/mince_interface_spec.rb
+    spec/units/config_spec.rb
+    spec/units/data_store_spec.rb
+    spec/units/interface_spec.rb
+  )
   s.require_paths = ["lib"]
 
   s.add_development_dependency('rake', '~> 0.9')
