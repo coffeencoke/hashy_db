@@ -1,15 +1,15 @@
 module HashyDb
   module Version
     def self.major
-      1
+      2
     end
 
     def self.minor
-      1
+      0
     end
 
     def self.patch
-      0
+      '0.RC1'
     end
   end
 
