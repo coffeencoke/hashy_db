@@ -24,7 +24,7 @@ module HashyDb # :nodoc:
 
     # Provides the patch level version of the library
     def self.patch
-      '0.RC1'
+      '0.pre'
     end
   end
 

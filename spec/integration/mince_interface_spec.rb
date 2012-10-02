@@ -1,9 +1,7 @@
 require_relative '../../lib/hashy_db'
-require_relative '../support/shared_examples/mince_interface_example'
+require 'mince/shared_examples/interface_example'
 
 describe 'Mince Interface with HashyDb' do
-  let(:expected_primary_key) { :id }
-
   before do
     Mince::Config.interface = Mince::HashyDb::Interface
   end
