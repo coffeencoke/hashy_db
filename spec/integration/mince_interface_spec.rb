@@ -6,5 +6,9 @@ describe 'Mince Interface with HashyDb' do
     Mince::Config.interface = Mince::HashyDb::Interface
   end
 
+  after do
+    Mince::Config.interface.clear
+  end
+
   it_behaves_like 'a mince interface'
 end
