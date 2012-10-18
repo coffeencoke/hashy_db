@@ -4,7 +4,7 @@ require 'hashy_db'
 
 Gem::Specification.new do |s|
   s.name        = "hashy_db"
-  s.version     = HashyDb.version
+  s.version     = Mince::HashyDb.version
   s.authors     = ["Matt Simpson", "Jason Mayer", "Asynchrony"]
   s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
   s.homepage    = "https://github.com/asynchrony/#{s.name}"
