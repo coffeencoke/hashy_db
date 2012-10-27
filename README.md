@@ -1,20 +1,45 @@
-# What is HashyDb?
+# HashyDb
 
-HashyDb is a Light weight ORM to persist data to an in memory hash in ruby.
+HashyDb is a ruby in-memory hash database to provide a quick way to develop without any external database dependency in Ruby applications.
 
-I intend on writing a blog post about how to use the mince libraries, but until then, browse (the wiki)[https://github.com/asynchrony/hashy_db/wiki] for instruction and documentation.
+HashyDb is a database interface that abides to the [Mince](https://github.com/coffeencoke/mince/) interface API requirements and is officially supported by [Mince](https://github.com/coffeencoke/mince/).
+
+# How to use it
+
+View the [Mince Wiki](https://github.com/coffeencoke/mince/wiki) on details on how to use this gem.
+
+Basically -
+
+```
+gem install mince hashy_db
+```
+
+```ruby
+require 'mince'
+require 'hashy_db'
+interface = Mince::HashyDb::Interface # => Mince::HashyDb::Interface 
+interface.add 'tron_light_cycles', luminating_color: 'red', grid_locked: true, rezzed: false
+interface.add 'tron_light_cycles', luminating_color: 'blue', grid_locked: true, rezzed: true
+interface.find_all('tron_light_cycles') 
+	# => [{:luminating_color=>"red", :grid_locked=>true, :rezzed=>false}, 		  {:luminating_color=>"blue", :grid_locked=>true, :rezzed=>true}] 
+interface.get_for_key_with_value('tron_light_cycles', :luminating_color, 'blue')
+	# => {:luminating_color=>"blue", :grid_locked=>true, :rezzed=>true} 
+```
+
+# Links
+
+* [API Docs](http://rdoc.info/github/coffeencoke/hashy_db/update_to_v2/frames)
+* [Rubygems](https://rubygems.org/gems/hashy_db)
+* [Github](https://github.com/coffeencoke/hashy_db)
+* [Wiki](https://github.com/coffeencoke/hashy_db/wiki)
+* [Mince](https://github.com/coffeencoke/mince)
+
+# Why would you want this?
+
+- To defer choosing your database until you know most about your application.
+- Provides assistance in designing and developing a database agnostic application.
+- Offers very little technical dependencies.  In order to develop or run the tests for your application you just need ruby installed, run bundle install and you're good to go.  No need to install and start your database, migrate, etc.
 
 # Contribute
 
-- fork into a topic branch, write specs, make a pull request.
-
-# Owners
-
-Matt Simpson - [@railsgrammer](https://twitter.com/railsgrammer)
-
-Jason Mayer - [@farkerhaiku](https://twitter.com/farkerhaiku)
-
-# Contributors
-
-David Czarnecki - [@czarneckid](https://twitter.com/czarneckid)
-Amos King - [@adkron](https://twitter.com/adkron)
+This gem is officially supported by [Mince](https://github.com/coffeencoke/mince/), please go there to learn how to contribute.
