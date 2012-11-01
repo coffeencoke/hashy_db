@@ -7,12 +7,16 @@ Gem::Specification.new do |s|
   s.version     = Mince::HashyDb.version
   s.authors     = ["Matt Simpson", "Jason Mayer", "Asynchrony"]
   s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
-  s.homepage    = "https://github.com/asynchrony/#{s.name}"
-  s.summary     = %q{Library to interact with in-memory hash database collections}
-  s.description = %q{Library to interact with in-memory hash database collections. Offers very little technical dependencies.  In order to develop or run the tests for your application you just need ruby installed, run bundle install and you're good to go.  No need to install and start your database, migrate, etc.}
+  s.homepage    = "https://github.com/coffeencoke/#{s.name}"
+  s.summary     = %q{Ruby library to interact with in-memory hash database collections}
+  s.description = <<-EOF
+    Ruby library to interact with in-memory hash database collections. Offers very little technical dependencies.  
+    In order to develop or run the tests for your application you just need ruby installed, run bundle install and 
+    you're good to go.  No need to install and start your database, migrate, etc.
+  EOF
 
   s.rubyforge_project = s.name
-
+  s.has_rdoc = true
   s.files         = %w(
     lib/hashy_db.rb 
     lib/hashy_db/data_store.rb 
@@ -27,6 +31,8 @@ Gem::Specification.new do |s|
     spec/units/hashy_db/interface_spec.rb
   )
   s.require_paths = ["lib"]
+
+  s.required_ruby_version = '~> 1.9.0'
 
   s.add_development_dependency('rake', '~> 0.9')
   s.add_development_dependency('rspec', '~> 2.0')
