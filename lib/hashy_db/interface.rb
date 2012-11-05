@@ -26,11 +26,11 @@ module Mince
       # @param [#to_s] salt any object that responds to #to_s
       # @return [String] A unique id based on the salt and the current time
       def self.generate_unique_id(salt)
-        Digest::SHA256.hexdigest("#{Time.now}#{salt}")[0..6]
+        PrimaryKey.generate(salt)
       end
 
       def self.primary_key
-        Config.primary_key
+        PrimaryKey.name
       end
 
       # Deletes a field from all records in the given collection
@@ -231,6 +231,16 @@ module Mince
       # Alias to Mince::HashyDb::DataStore.data
       def self.data
         DataStore.data
+      end
+    end
+
+    module PrimaryKey
+      def self.name
+        Config.primary_key
+      end
+
+      def self.generate(salt)
+        Digest::SHA256.hexdigest("#{Time.now}#{salt}")[0..6]
       end
     end
   end
