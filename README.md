@@ -1,5 +1,7 @@
 # HashyDb
 
+[![Travis CI](https://travis-ci.org/coffeencoke/hashy_db.png)](https://travis-ci.org/#!/coffeencoke/hashy_db)
+
 HashyDb is a ruby in-memory hash database to provide a quick way to develop without any external database dependency in Ruby applications.
 
 HashyDb is a database interface that abides to the [Mince](https://github.com/coffeencoke/mince/) interface API requirements and is officially supported by [Mince](https://github.com/coffeencoke/mince/).
