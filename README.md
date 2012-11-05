@@ -30,10 +30,11 @@ interface.get_for_key_with_value('tron_light_cycles', :luminating_color, 'blue')
 
 # Links
 
-* [API Docs](http://rdoc.info/github/coffeencoke/hashy_db/update_to_v2/frames)
+* [API Docs](http://rdoc.info/github/coffeencoke/hashy_db/master/frames)
 * [Rubygems](https://rubygems.org/gems/hashy_db)
 * [Github](https://github.com/coffeencoke/hashy_db)
 * [Wiki](https://github.com/coffeencoke/hashy_db/wiki)
+* [Mailing List](https://groups.google.com/forum/?fromgroups#!forum/mince_dev)
 * [Mince](https://github.com/coffeencoke/mince)
 
 # Why would you want this?
