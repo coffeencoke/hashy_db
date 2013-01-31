@@ -78,7 +78,7 @@ module Mince
       # @param [String] field_value the value to update the field to
       # @return [void] no specific return value
       def self.update_field_with_value(collection_name, primary_key_value, field_name, new_value)
-        find(collection_name, primary_key, primary_key_value)[field_name] = new_value
+        find(collection_name, primary_key_value)[field_name] = new_value
       end
 
       # Increments or decrements the field by the given amount for the record for the given id.
@@ -89,7 +89,7 @@ module Mince
       # @param [String] amount the amount to increment or decrement the field by
       # @return [void] no specific return value
       def self.increment_field_by_amount(collection_name, primary_key_value, field_name, amount)
-        find(collection_name, primary_key, primary_key_value)[field_name] += amount
+        find(collection_name, primary_key_value)[field_name] += amount
       end
 
       # Gets all records that have the value for a given key.
@@ -134,22 +134,20 @@ module Mince
       # Gets a record matching a key and value
       #
       # @param [Symbol] collection_name the name of the collection
-      # @param [String] key the key to find a record by
       # @param [*] value a value the find a record by
       # @return [Hash] a record that matches the given key and value
-      def self.find(collection_name, key, value)
-        find_all(collection_name).find { |x| x[key] == value }
+      def self.find(collection_name, value)
+        find_all(collection_name).find { |x| x[primary_key] == value }
       end
 
       # Pushes a value to a record's key that is an array
       #
       # @param [Symbol] collection_name the name of the collection
-      # @param [String] identifying_key the field used to find the record
       # @param [*] identifying_value the value used to find the record
       # @param [String] array_key the field to push an array to
       # @param [*] value_to_push the value to push to the array
-      def self.push_to_array(collection_name, identifying_key, identifying_value, array_key, value_to_push)
-        record = find(collection_name, identifying_key, identifying_value)
+      def self.push_to_array(collection_name, identifying_value, array_key, value_to_push)
+        record = find(collection_name, identifying_value)
         if (record[array_key])
           record[array_key] << value_to_push
         else
@@ -161,12 +159,11 @@ module Mince
       # Removes a value from a record's key that is an array
       #
       # @param [Symbol] collection_name the name of the collection
-      # @param [String] identifying_key the field used to find the record
       # @param [*] identifying_value the value used to find the record
       # @param [String] array_key the field to push an array from
       # @param [*] value_to_remove the value to remove from the array
-      def self.remove_from_array(collection_name, identifying_key, identifying_value, array_key, value_to_pop)
-        record = find(collection_name, identifying_key, identifying_value)
+      def self.remove_from_array(collection_name, identifying_value, array_key, value_to_pop)
+        record = find(collection_name, identifying_value)
         record[array_key].reject! { |x| x == value_to_pop }
       end
 
