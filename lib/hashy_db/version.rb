@@ -25,7 +25,7 @@ module Mince # :nodoc:
 
       # Provides the patch level version of the library
       def self.patch
-        2
+        3
       end
     end
 
