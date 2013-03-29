@@ -17,19 +17,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = s.name
   s.has_rdoc = true
-  s.files         = %w(
-    lib/hashy_db.rb 
-    lib/hashy_db/data_store.rb 
-    lib/hashy_db/version.rb 
-    lib/hashy_db/config.rb 
-    lib/hashy_db/interface.rb
-  )
-  s.test_files    = %w(
-    spec/integration/mince_interface_spec.rb
-    spec/units/hashy_db/config_spec.rb
-    spec/units/hashy_db/data_store_spec.rb
-    spec/units/hashy_db/interface_spec.rb
-  )
+  s.files = Dir.glob("{bin,lib}/**/*") + %w(LICENSE.txt README.md)
+  s.test_files = Dir.glob('spec/**/*.rb')
+  s.license = "MIT"
   s.require_paths = ["lib"]
 
   s.required_ruby_version = '>= 1.9.3'
