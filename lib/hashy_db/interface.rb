@@ -123,9 +123,9 @@ module Mince
         end
       end
 
-      def self.all_before(collection_name, field, time)
+      def self.all_before(collection_name, field, value)
         self.find_all(collection_name).select do |record|
-          record[field] < time
+          record[field] < value
         end
       end
 
