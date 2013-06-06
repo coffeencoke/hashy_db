@@ -123,6 +123,12 @@ module Mince
         end
       end
 
+      def self.all_before(collection_name, field, time)
+        self.find_all(collection_name).select do |record|
+          record[field] < time
+        end
+      end
+
       # Gets all records for a collection
       #
       # @param [Symbol] collection_name the name of the collection
