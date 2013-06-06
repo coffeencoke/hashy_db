@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/coffeencoke/#{s.name}"
   s.summary     = %q{Ruby library to interact with in-memory hash database collections}
   s.description = <<-EOF
-    Ruby library to interact with in-memory hash database collections. Offers very little technical dependencies.  
-    In order to develop or run the tests for your application you just need ruby installed, run bundle install and 
+    Ruby library to interact with in-memory hash database collections. Offers very little technical dependencies.
+    In order to develop or run the tests for your application you just need ruby installed, run bundle install and
     you're good to go.  No need to install and start your database, migrate, etc.
   EOF
 
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('guard-rspec', '~> 0.6')
   s.add_development_dependency "yard", "~> 0.7"
   s.add_development_dependency "redcarpet", "~> 2.1"
-  s.add_development_dependency "debugger", "~> 1.2"
-  s.add_development_dependency "mince", "~> 2.0"
+  s.add_development_dependency "debugger", "~> 1.6"
+  s.add_development_dependency "mince", "~> 2.0.1"
   s.add_development_dependency "rb-fsevent", "~> 0.9.0"
 end
