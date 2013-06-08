@@ -20,12 +20,12 @@ module Mince # :nodoc:
 
       # Provides the minor level version of the library
       def self.minor
-        0
+        1
       end
 
       # Provides the patch level version of the library
       def self.patch
-        3
+        0
       end
     end
 
